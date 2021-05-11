@@ -1,0 +1,132 @@
+.container {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  color: white;
+  height: 100vh;
+}
+
+.landing {
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+
+  height: 100%;
+  width: 100%;
+
+  z-index: 1;
+  position: relative;
+  button {
+    animation: button_animation 500ms linear forwards;
+
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    border: none;
+    border: 0;
+    border-radius: 30px;
+    box-shadow: 2px 2px blue;
+    &:focus {
+      outline-width: 0;
+    }
+    background-color: rgb(24, 24, 223);
+    height: 60px;
+    width: 250px;
+  }
+}
+
+.landing_content {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  min-width: 300px;
+  h1 {
+    white-space: nowrap;
+  }
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.landing_links {
+  height: 15%;
+  width: 100%;
+  background-position: 50% 0% !important;
+  background-repeat: no-repeat !important;
+  background-image: url("https://irp-cdn.multiscreensite.com/md/dmtmpl/12a62abd-5937-415e-bb15-e62e944bbc41/dms3rep/multi/cercle+white+border+top.svg") !important;
+  background-size: cover !important;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.link {
+  height: 75px;
+  width: 75px;
+  margin: 0 5px;
+  border-radius: 17px;
+  transform: translateY(-50%);
+  &:nth-child(2) {
+    background-color: white;
+  }
+  cursor: pointer;
+}
+
+.about_me {
+  height: 100%;
+  background-color: white;
+  z-index: 2;
+  background-color: white;
+}
+
+.welcome_image_container {
+  height: 100px;
+  width: 100px;
+  position: relative;
+  margin: 30px 0;
+}
+
+.rocket {
+  height: 75%;
+  width: 75%;
+  position: absolute;
+  top: -30%;
+  right: -30%;
+  animation: rocketanimation 500ms linear forwards;
+}
+
+.landing_text {
+  animation: bringintext 500ms linear forwards;
+}
+
+@keyframes rocketanimation {
+  from {
+    transform: translate(-150px, 100px);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+@keyframes button_animation {
+  from {
+    transform: translateY(-20vh);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes bringintext {
+  from {
+    transform: translateX(-50vw);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0, 0);
+    opacity: 1;
+  }
+}
