@@ -49,7 +49,16 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className={styles.about_me}></div>
+      <div className={styles.about_me}>
+        <div>
+        <h1 className={`font-bold text-2xl p-1 ${styles.landing_text}`}>Bate Tanyi</h1>
+        <p>
+          
+        </p>
+
+        </div>
+        <div></div>
+      </div>
     </div>
   );
 }
