@@ -1,8 +1,16 @@
 import Head from "next/head";
 import Image from "next/image";
+import ProjectCard from "../components/project-card/ProjectCard";
 import styles from "../styles/Home.module.scss";
 
 export default function Home() {
+  const projects = [
+    {
+      name: "REST API Countries Dashboard",
+      description: "lorem ipsums esdsfksfsd",
+      image: "/rest-api-dashboard.png",
+    },
+  ];
   return (
     <div className={styles.container}>
       <Head>
@@ -69,7 +77,7 @@ export default function Home() {
             to contact me.
           </p>
         </section>
-        <div className={styles.skill_strip_container}>
+        <div className={styles.skill_strip_container + " mb-6"}>
           {[...Array(2).keys()].map((el) => (
             <div className={styles.skill_strip} key={el}>
               <img
@@ -109,10 +117,16 @@ export default function Home() {
           ))}
         </div>
 
-        <div>
-          <h1 className={`font-bold text-xl ${styles.landing_text}`}>
-            Portfolio
-          </h1>
+        <div className={styles.about_me + " mb-6"}>
+          <h1 className={`font-bold text-3xl`}>Portfolio</h1>
+          {projects.map((project) => (
+            <ProjectCard
+              {...{
+                image: project.image,
+                imageEndPoint: "/assets/project-images",
+              }}
+            />
+          ))}
         </div>
       </div>
     </div>
