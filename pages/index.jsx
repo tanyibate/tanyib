@@ -15,9 +15,11 @@ export default function Home() {
         <div id="stars2"></div>
         <div id="stars3"></div>
 
-        <div className={styles.landing_content}>
+        <section className={styles.landing_content}>
           <div className="flex items-center flex-wrap justify-center">
-            <h1 className={`font-bold text-2xl p-1 ${styles.landing_text}`}>
+            <h1
+              className={`font-bold text-xl md:text-2xl p-1 ${styles.landing_text}`}
+            >
               Let's get your idea the moon!
             </h1>
             <div className={styles.welcome_image_container}>
@@ -30,13 +32,8 @@ export default function Home() {
             </div>
           </div>
           <button>Get in Touch</button>
-        </div>
+        </section>
         <div className={styles.landing_links}>
-          <img
-            src="/assets/instagram.png"
-            alt=""
-            className={`${styles.link} shadow-lg`}
-          />
           <img
             src="/assets/linkedin.png"
             alt=""
@@ -47,17 +44,76 @@ export default function Home() {
             alt=""
             className={`${styles.link} shadow-lg`}
           />
+          <img
+            src="/assets/github.jpeg"
+            alt=""
+            className={`${styles.link} shadow-lg`}
+          />
         </div>
       </div>
-      <div className={styles.about_me}>
-        <div>
-        <h1 className={`font-bold text-2xl p-1 ${styles.landing_text}`}>Bate Tanyi</h1>
-        <p>
-          
-        </p>
-
+      <div className="w-full flex flex-col justify-center items-center px-4 md:px-8">
+        <section className={styles.about_me}>
+          <h1 className={`font-bold text-3xl`}>About me</h1>
+          <p style={{ lineHeight: "200%" }} className="mb-8">
+            I am a full-stack developer who has a love for everything that is
+            JavaScript my forte is combination of React on the front-end and
+            Express.js/Node.js on the backend. I have dabbled in a range
+            JavaScript frameworks such as Vue.js and Angular.
+            <br />
+            <br />I have been working as a full-stack developer for more than
+            two years now and over that time I've worked with government clients
+            and completed personal projects during which I had the opportunity
+            to develop skills such as database management, quality analysis,
+            application development and testing, I am always looking for more
+            opportunities to challenge myself as a developer so please feel free
+            to contact me.
+          </p>
+        </section>
+        <div className={styles.skill_strip_container}>
+          {[...Array(2).keys()].map((el) => (
+            <div className={styles.skill_strip} key={el}>
+              <img
+                src="/assets/react-logo.png"
+                alt=""
+                className={styles.skill}
+              />
+              <img
+                src="/assets/html-logo.png"
+                alt=""
+                className={styles.skill}
+              />
+              <img
+                src="/assets/nodejs-logo.png"
+                alt=""
+                className={styles.skill}
+              />
+              <img
+                src="/assets/expressjs.png"
+                alt=""
+                className={styles.skill}
+              />
+              <img
+                src="/assets/postgressql.png"
+                alt=""
+                className={styles.skill}
+              />
+              <img src="/assets/sql.png" alt="" className={styles.skill} />
+              <img
+                src="/assets/vuejs-logo.png"
+                alt=""
+                className={styles.skill}
+              />
+              <img src="/assets/css.png" alt="" className={styles.skill} />
+              <img src="/assets/aws.png" alt="" className={styles.skill} />
+            </div>
+          ))}
         </div>
-        <div></div>
+
+        <div>
+          <h1 className={`font-bold text-xl ${styles.landing_text}`}>
+            Portfolio
+          </h1>
+        </div>
       </div>
     </div>
   );

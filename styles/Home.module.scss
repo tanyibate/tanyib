@@ -2,33 +2,55 @@
   overflow-y: scroll;
   overflow-x: hidden;
   color: white;
-  height: 100vh;
 }
 
 .landing {
   background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
 
-  height: 100%;
+  height: 100vh;
   width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  overflow: clip;
 
   z-index: 1;
   position: relative;
   button {
     animation: button_animation 500ms linear forwards;
-
     cursor: pointer;
     font-size: 18px;
     color: white;
-    border: none;
-    border: 0;
-    border-radius: 30px;
-    box-shadow: 2px 2px blue;
-    &:focus {
-      outline-width: 0;
-    }
-    background-color: rgb(24, 24, 223);
+    border: 1px solid white;
+    background-color: transparent;
     height: 60px;
     width: 250px;
+    overflow: hidden;
+    transition: color 0.5s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      outline-width: 0;
+      height: 100%;
+      width: 0%;
+      background-color: white;
+      color: black;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      left: 0;
+      top: 0;
+      justify-content: center;
+      transition: width 0.5s;
+      z-index: -1;
+    }
+    &:hover {
+      &::before {
+        width: 100%;
+      }
+
+      color: black;
+    }
   }
 }
 
@@ -48,7 +70,7 @@
 }
 
 .landing_links {
-  height: 15%;
+  height: 10%;
   width: 100%;
   background-position: 50% 0% !important;
   background-repeat: no-repeat !important;
@@ -60,6 +82,9 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  image {
+    background-color: white;
+  }
 }
 
 .link {
@@ -75,12 +100,53 @@
 }
 
 .about_me {
-  height: 100%;
   background-color: white;
   z-index: 2;
-  padding: 60px;
-  display: flex;
   color: gray;
+  width: 100%;
+  max-width: 1024px;
+}
+
+$skill-strip-width: 1200px;
+
+.skill_strip_container {
+  position: relative;
+  height: 60px;
+  width: 100%;
+  max-width: 1024px;
+  overflow: hidden;
+  .skill_strip {
+    width: $skill-strip-width;
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    animation-iteration-count: infinite;
+    animation-duration: 20s;
+    animation-timing-function: linear;
+    &:nth-child(1) {
+      top: 0;
+      left: 0;
+      animation-name: firstslide;
+    }
+    &:nth-child(2) {
+      top: 0;
+      left: $skill-strip-width;
+      animation-name: secondslide;
+    }
+    .skill {
+      height: 60px;
+      width: auto;
+    }
+  }
+}
+
+.projects {
+  width: 100%;
+}
+
+.about_me_image {
+  height: 90%;
+  width: auto;
 }
 
 .about_me_text {
@@ -136,5 +202,23 @@
   to {
     transform: translate(0, 0);
     opacity: 1;
+  }
+}
+
+@keyframes firstslide {
+  from {
+    left: 0;
+  }
+  to {
+    left: -$skill-strip-width;
+  }
+}
+
+@keyframes secondslide {
+  from {
+    left: $skill-strip-width;
+  }
+  to {
+    left: 0;
   }
 }
