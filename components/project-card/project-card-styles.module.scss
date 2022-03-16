@@ -1,25 +1,28 @@
 .container {
-  height: 280px;
-  width: 340px;
+  height: 260px;
+  width: 320px;
   padding: 5px;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.15),
-    0 4px 6px -4px rgb(0 0 0 / 0.15);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  border: 1px solid gainsboro;
   position: relative;
   .inner_container {
     height: 240px;
     width: 300px;
     position: relative;
     border-radius: 8px;
+    border: 1px solid gainsboro;
+    overflow: hidden;
     img {
       height: 80%;
       width: 100%;
       z-index: 0;
     }
     .description {
+      border-top: 1px solid gainsboro;
       height: 20%;
       width: 100%;
       position: absolute;
