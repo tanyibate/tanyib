@@ -56,6 +56,9 @@ a {
     -webkit-transform: translate3d(1000px, 0px, 0px);
   }
 }
+.swiper-pagination {
+  transform: translateY(-20px);
+}
 
 .stars {
   background: black

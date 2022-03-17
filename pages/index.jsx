@@ -1,14 +1,47 @@
 import Head from "next/head";
-import Image from "next/image";
 import ProjectCard from "../components/project-card/ProjectCard";
 import styles from "../styles/Home.module.scss";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Grid } from "swiper";
+import { useForm } from "react-hook-form";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/grid";
 
 export default function Home() {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => console.log(data);
   const projects = [
     {
       name: "REST API Countries Dashboard",
-      description: "lorem ipsums esdsfksfsd",
+      description:
+        "A country statistics dashboard created using React with data supplied by the restcountries.com api. Countries can be filtered by region and name.",
       image: "/rest-api-dashboard.png",
+    },
+    {
+      name: "E-Commerce product page",
+      description:
+        "An exemplar page of an e-commerce website product created using React. The product can be added to the cart. Cart state is tracked using redux.",
+      image: "/e-commerce-product-page.png",
+    },
+    {
+      name: "Sunnyside agency landing page",
+      description:
+        "An exemplar landing page of a digital agency created using React.",
+      image: "/sunnyside-agency-landing-page.png",
+    },
+    {
+      name: "Teacozy Chatbot",
+      description:
+        "A full-stack application with React on the front-end and Express.js on the backend. It's a chatbot that allows customer of teashop to ask questions about their business.",
+      image: "/tea-cozy-chatbot.png",
     },
   ];
   return (
@@ -60,7 +93,7 @@ export default function Home() {
         </div>
       </div>
       <div className="w-full flex flex-col justify-center items-center px-4 md:px-8">
-        <section className={styles.about_me}>
+        <section className={styles.about_me} id="aboutme">
           <h1 className={`font-bold text-3xl`}>About me</h1>
           <p style={{ lineHeight: "200%" }} className="mb-8">
             I am a full-stack developer who has a love for everything that is
@@ -117,17 +150,79 @@ export default function Home() {
           ))}
         </div>
 
-        <div className={styles.about_me + " mb-6"}>
-          <h1 className={`font-bold text-3xl`}>Portfolio</h1>
-          {projects.map((project) => (
-            <ProjectCard
-              {...{
-                image: project.image,
-                imageEndPoint: "/assets/project-images",
-              }}
+        <section
+          className={styles.about_me + " mb-6 w-full max-w-screen-lg"}
+          id="portfolio"
+        >
+          <h1 className={`font-bold text-3xl mb-6`}>Portfolio</h1>
+          <Swiper
+            modules={[Pagination, Grid]}
+            spaceBetween={25}
+            slidesPerView={1}
+            grid={{
+              rows: 1,
+              fill: "row",
+            }}
+            breakpoints={{
+              // when window width is >= 768px
+              700: {
+                slidesPerView: 2,
+                spaceBetween: 25,
+                grid: {
+                  rows: 2,
+                  fill: "row",
+                },
+              },
+              // when window width is >= 900px
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 25,
+                grid: {
+                  rows: 2,
+                  fill: "row",
+                },
+              },
+            }}
+            pagination={{ clickable: true }}
+            onSlideChange={() => console.log("slide change")}
+            onSwiper={(swiper) => console.log(swiper)}
+          >
+            {projects.map((project) => (
+              <SwiperSlide key={project.name}>
+                <ProjectCard
+                  {...{
+                    image: project.image,
+                    imageEndPoint: "/assets/project-images",
+                    name: project.name,
+                    description: project.description,
+                  }}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </section>
+        <section
+          className={styles.contact_me + " mb-6 w-full max-w-screen-lg"}
+          id="portfolio"
+        >
+          <h1 className={`font-bold text-3xl mb-6`}>Contact Me</h1>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <label htmlFor="firstName">First Name</label>
+            <input type="text" {...register("firstName")} />
+            <label htmlFor="lastName">Last Name</label>
+            <input type="text" {...register("lastName")} />
+            <label htmlFor="email">Email</label>
+            <input type="text" {...register("email")} />
+            <label htmlFor="query">Query</label>
+            <input
+              type="text"
+              {...register("query")}
+              id="query"
+              style={{ height: "150px" }}
             />
-          ))}
-        </div>
+            <button>Send</button>
+          </form>
+        </section>
       </div>
     </div>
   );

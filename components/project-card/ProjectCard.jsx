@@ -12,7 +12,12 @@ export default function ProjectCard({
     <div className={styles.container}>
       <div className={styles.inner_container}>
         <img src={imageEndPoint + image} alt="" />
-        <div className={styles.description}></div>
+        <div className={styles.description}>
+          <div className="h-1/3 flex items-center justify-center">
+            <h3>{name}</h3>
+          </div>
+          <p>{description}</p>
+        </div>
       </div>
     </div>
   );
